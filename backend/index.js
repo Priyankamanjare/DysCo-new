@@ -1,4 +1,5 @@
 const express = require('express');
+const https = require('https');
 const dotenv = require('dotenv');
 const path = require('path');
 const cors = require('cors');
@@ -34,6 +35,11 @@ app.get("/", (req, res) => {
     res.send("Welcome to the lexilearn server");
 });
 
+// ✅ Health Check (keeps Render server alive)
+app.get("/health", (req, res) => {
+    res.status(200).send("OK");
+});
+
 // ✅ API Routes
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/summary", summaryRoutes);
@@ -47,4 +53,17 @@ app.use("/api/v1/progress", gameProgressRoutes);
 // ✅ Server Start
 app.listen(PORT, () => {
     console.log(`Server started at Port: ${PORT}`);
+
+    // ✅ Self-ping every 14 minutes to prevent Render free-tier sleep
+    const RENDER_URL = process.env.RENDER_URL; // e.g. https://your-app.onrender.com
+    if (RENDER_URL) {
+        setInterval(() => {
+            https.get(`${RENDER_URL}/health`, (res) => {
+                console.log(`[Keep-alive] Health ping status: ${res.statusCode}`);
+            }).on('error', (err) => {
+                console.error('[Keep-alive] Ping failed:', err.message);
+            });
+        }, 14 * 60 * 1000); // every 14 minutes
+        console.log(`[Keep-alive] Self-ping enabled → ${RENDER_URL}/health`);
+    }
 });
