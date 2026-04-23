@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { AiFillDelete } from "react-icons/ai";
@@ -16,6 +17,7 @@ const NotesCard = ({ id, title, content, refreshNotes }) => {
   const [isQuizLoading, setIsQuizLoading] = useState(false);
 
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -78,7 +80,7 @@ const NotesCard = ({ id, title, content, refreshNotes }) => {
 
         if (response.data.quiz) {
           toast.success('Quiz generated! Starting now...');
-          window.location.href = `/quiz/take/${response.data.quiz._id}`;
+          navigate(`/quiz/take/${response.data.quiz._id}`);
         }
       } catch (error) {
         console.error('Error generating quiz:', error);

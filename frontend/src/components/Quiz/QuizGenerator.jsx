@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useAuthContext } from '../../hooks/useAuthContext';
@@ -14,6 +15,7 @@ const QuizGenerator = () => {
   const [loading, setLoading] = useState(false);
   const loadingRef = useRef(false);
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchNotes();
@@ -69,7 +71,7 @@ const QuizGenerator = () => {
       if (response.data.quiz) {
         toast.success('Quiz generated successfully!');
         // Navigate to quiz taking page
-        window.location.href = `/quiz/take/${response.data.quiz._id}`;
+        navigate(`/quiz/take/${response.data.quiz._id}`);
       }
     } catch (error) {
       console.error('Error generating quiz:', error);
