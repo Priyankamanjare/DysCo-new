@@ -102,16 +102,15 @@ const NotesCard = ({ id, title, content, refreshNotes }) => {
       return (
         <div className="note__card">
           <div className="note__text">
-            <h2>{title?.toUpperCase()}</h2>
-            <p>{content?.substring(0, 50)}</p>
+            <h2>{title}</h2>
+            <p>{content}</p>
           </div>
           <div className="note__icons">
-            <div onClick={openModal}><FaRegEye cursor={'pointer'} title="View" /></div>
-            <div onClick={handleEdit}><LuClipboardEdit cursor={'pointer'} title="Edit" /></div>
-            <div onClick={handleTakeQuiz} style={{ cursor: isQuizLoading ? 'not-allowed' : 'pointer', opacity: isQuizLoading ? 0.6 : 1 }}>
-              <MdQuiz cursor={'pointer'} title={isQuizLoading ? 'Quiz is generating...' : 'Take Quiz'} style={{color: '#667eea', fontSize: '1.2em'}} />
+            <div onClick={handleEdit} title="Edit"><LuClipboardEdit /></div>
+            <div onClick={handleTakeQuiz} className={isQuizLoading ? 'icon-loading' : ''} title={isQuizLoading ? 'Generating Quiz...' : 'Take Quiz'}>
+              <MdQuiz />
             </div>
-            <span onClick={handleDelete}><AiFillDelete cursor={'pointer'} title="Delete" /></span>
+            <span onClick={handleDelete} title="Delete"><AiFillDelete /></span>
           </div>
           <NotesPreview isOpen={modalIsOpen} closeModal={closeModal} id={id} title={title} content={content} isEditing={isEditing} setIsEditing={setIsEditing} refreshNotes={refreshNotes}/>
         </div>

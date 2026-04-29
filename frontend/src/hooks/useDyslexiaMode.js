@@ -8,8 +8,8 @@ export const useDyslexiaMode = () => {
 
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('dyslexiaTheme');
-    if (saved === 'dark') return 'cream';
-    return saved || 'cream';
+    if (!saved || saved === 'dark') return 'professional';
+    return saved;
   });
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export const useDyslexiaMode = () => {
       setIsDyslexiaMode(localStorage.getItem('dyslexiaMode') === 'true');
       const savedTheme = localStorage.getItem('dyslexiaTheme');
       if (savedTheme) {
-         setTheme(savedTheme === 'dark' ? 'cream' : savedTheme);
+         setTheme(savedTheme);
       }
     };
     window.addEventListener('dyslexia-sync', handleSync);
@@ -27,7 +27,7 @@ export const useDyslexiaMode = () => {
 
   useEffect(() => {
     // Clear previously applied theme classes to ensure pure transition
-    document.body.classList.remove('theme-cream', 'theme-blue');
+    document.body.classList.remove('theme-cream', 'theme-blue', 'theme-professional');
 
     if (isDyslexiaMode) {
       document.body.classList.add('dyslexia-mode');
@@ -35,6 +35,7 @@ export const useDyslexiaMode = () => {
       localStorage.setItem('dyslexiaMode', 'true');
     } else {
       document.body.classList.remove('dyslexia-mode');
+      document.body.classList.add('theme-professional');
       localStorage.setItem('dyslexiaMode', 'false');
     }
   }, [isDyslexiaMode, theme]);

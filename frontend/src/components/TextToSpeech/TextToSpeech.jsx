@@ -242,68 +242,66 @@ const TextToSpeech = () => {
         />
       )}
       
-      <select
-        value={selectedVoice ? selectedVoice.name : ''}
-        onChange={(e) => {
-          const voice = voices.find(v => v.name === e.target.value);
-          setSelectedVoice(voice);
-        }}
-        disabled={!voices.length}
-        style={{ margin: '15px 0', padding: '8px', borderRadius: '5px' }}
-      >
-        {voices.map((voice, index) => (
-          <option key={index} value={voice.name}>
-            {voice.name} ({voice.lang})
-          </option>
-        ))}
-      </select>
+      <div className="tts__controls">
+        <select
+          value={selectedVoice ? selectedVoice.name : ''}
+          onChange={(e) => {
+            const voice = voices.find(v => v.name === e.target.value);
+            setSelectedVoice(voice);
+          }}
+          disabled={!voices.length}
+        >
+          {voices.map((voice, index) => (
+            <option key={index} value={voice.name}>
+              {voice.name} ({voice.lang})
+            </option>
+          ))}
+        </select>
 
-      <div style={{ margin: '10px 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <label style={{ marginBottom: '5px', fontWeight: 'bold' }}>
-          Speed: {speechRate.toFixed(1)}x
-        </label>
-        <input 
-          type="range" 
-          className="tts-slider"
-          min="0.5" 
-          max="1.5" 
-          step="0.1" 
-          value={speechRate}
-          onChange={(e) => setSpeechRate(parseFloat(e.target.value))}
-        />
-      </div>
+        <div className="slider-container">
+          <label>
+            Speed: {speechRate.toFixed(1)}x
+          </label>
+          <input 
+            type="range" 
+            className="tts-slider"
+            min="0.5" 
+            max="1.5" 
+            step="0.1" 
+            value={speechRate}
+            onChange={(e) => setSpeechRate(parseFloat(e.target.value))}
+          />
+        </div>
 
-      <div style={{ margin: '10px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <input 
-          type="checkbox" 
-          id="visualsToggle"
-          checked={showVisuals}
-          onChange={handleToggleVisuals}
-          style={{ width: '18px', height: '18px', cursor: 'pointer' }}
-        />
-        <label htmlFor="visualsToggle" style={{ fontWeight: '500', cursor: 'pointer' }}>
-          Show Visuals
+        <label className="visuals-toggle" htmlFor="visualsToggle">
+          <input 
+            type="checkbox" 
+            id="visualsToggle"
+            checked={showVisuals}
+            onChange={handleToggleVisuals}
+          />
+          <span>Show Visuals</span>
         </label>
       </div>
 
-      <div style={{ display: 'flex', gap: '10px' }}>
+      <div className="tts__actions">
         {isReadingMode && (
           <button className="secondary__btn" onClick={() => { setIsReadingMode(false); handleStop(); }}>
             Edit Text
           </button>
         )}
-        <button className="primary__btn" onClick={handleConvertTextToSpeech} disabled={isSpeaking && !isPaused}>
+        <button className="convert-btn" onClick={handleConvertTextToSpeech} disabled={isSpeaking && !isPaused}>
           Convert to Speech
         </button>
-        <button className="primary__btn share__btn" onClick={shareTextForGames}>
+        <button className="share-btn" onClick={shareTextForGames}>
           Share Text for Games
         </button>
       </div>
 
-      <div style={{marginTop: '15px', display: 'flex', gap: '10px'}}>
-        <button className="primary__btn" onClick={handlePause} disabled={isPaused || !isSpeaking}>Pause</button>
-        <button className="primary__btn" onClick={handleResume} disabled={!isPaused}>Resume</button>
-        <button className="primary__btn" onClick={handleStop} disabled={!isSpeaking && !isPaused}>Stop</button>
+      <div className="tts__actions">
+        <button className="convert-btn" style={{ background: '#3b82f6' }} onClick={handlePause} disabled={isPaused || !isSpeaking}>Pause</button>
+        <button className="convert-btn" style={{ background: '#10b981' }} onClick={handleResume} disabled={!isPaused}>Resume</button>
+        <button className="convert-btn" style={{ background: '#ef4444' }} onClick={handleStop} disabled={!isSpeaking && !isPaused}>Stop</button>
       </div>
     </div>
   );

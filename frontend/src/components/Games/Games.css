@@ -1,237 +1,169 @@
+/* ==================== Professional Solid Game Theme ==================== */
+
 .game__container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 20px;
-  font-family: 'Arial', sans-serif;
+  width: 100%;
+  padding: 40px 20px;
+  background: var(--bg-dark); /* Ensure it matches the dashboard */
 }
 
 .game__card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
   padding: 40px;
   max-width: 600px;
   width: 100%;
-  position: relative;
-  z-index: 1;
+  color: white;
 }
 
 .game__card h1 {
   text-align: center;
-  color: #333;
-  margin-bottom: 10px;
+  color: white;
+  margin-bottom: 1.5rem;
   font-size: 28px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent-solid);
+  padding-bottom: 1rem;
 }
 
 .game__card h2 {
-  color: #555;
+  color: var(--text-dim);
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 20px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .game__setup {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .game__setup textarea,
 .game__setup select {
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  padding: 14px;
+  background: var(--bg-dark);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  color: white;
   font-size: 16px;
   font-family: inherit;
-  resize: vertical;
-  min-height: 80px;
+  outline: none;
+  transition: var(--transition);
 }
 
 .game__setup textarea:focus,
 .game__setup select:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-}
-
-.game__playing {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.game__instruction {
-  background: #f0f4ff;
-  padding: 15px;
-  border-radius: 8px;
-  color: #555;
-  text-align: center;
-  font-size: 14px;
-  margin-bottom: 10px;
+  border-color: var(--accent-solid);
 }
 
 .game__btn {
-  padding: 12px 20px;
+  padding: 14px 24px;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
 .start__btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--accent-solid);
   color: white;
-  padding: 15px 30px;
-  font-size: 18px;
+  margin-top: 10px;
 }
 
 .start__btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  background: #6d28d9;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
 .play__btn {
-  background: #4CAF50;
-  color: white;
-  padding: 15px;
-  font-size: 18px;
+  background: var(--accent-secondary);
+  color: #000;
 }
 
 .play__btn:hover:not(:disabled) {
-  background: #45a049;
-  transform: scale(1.05);
+  opacity: 0.9;
 }
 
 .play__btn:disabled {
-  background: #ccc;
+  opacity: 0.5;
   cursor: not-allowed;
-}
-
-.record__btn {
-  background: #ff6b6b;
-  color: white;
-  padding: 15px;
-  font-size: 18px;
-}
-
-.record__btn:hover:not(:disabled) {
-  background: #ff5252;
-  transform: scale(1.05);
-}
-
-.record__btn:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-.record__btn.recording {
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
-  }
 }
 
 .check__btn {
-  background: #2196F3;
+  background: var(--accent-solid);
   color: white;
-  padding: 12px;
-  font-size: 16px;
-}
-
-.check__btn:hover:not(:disabled) {
-  background: #0b7dda;
-  transform: translateY(-2px);
-}
-
-.check__btn:disabled {
-  background: #ccc;
-  cursor: not-allowed;
 }
 
 .reset__btn {
-  background: #FF9800;
-  color: white;
-  padding: 12px;
-  font-size: 16px;
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--glass-border);
 }
 
 .reset__btn:hover {
-  background: #F57C00;
-  transform: translateY(-2px);
+  border-color: #ef4444;
+  color: #ef4444;
 }
 
 .game__answer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  margin: 20px 0;
 }
 
 .game__answer label {
-  font-weight: bold;
-  color: #333;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .game__answer input {
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  padding: 14px;
+  background: var(--bg-dark);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  color: white;
   font-size: 16px;
-  font-family: inherit;
+  outline: none;
 }
 
 .game__answer input:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-}
-
-.game__attempts {
-  text-align: center;
-  font-weight: bold;
-  color: #ff6b6b;
-  font-size: 16px;
+  border-color: var(--accent-solid);
 }
 
 .game__score {
   text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: #667eea;
-  background: #f0f4ff;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-secondary);
+  background: rgba(45, 212, 191, 0.05);
+  border: 1px solid rgba(45, 212, 191, 0.2);
   padding: 15px;
-  border-radius: 8px;
-  margin-top: 10px;
+  border-radius: 4px;
+  margin-top: 20px;
 }
 
-.game__result {
-  background: #f9f9f9;
+.game__instruction {
+  background: rgba(255, 255, 255, 0.02);
   padding: 15px;
-  border-radius: 8px;
-  border-left: 4px solid #667eea;
-}
-
-.game__result p {
-  margin: 8px 0;
-  color: #333;
+  border-radius: 4px;
+  color: var(--text-dim);
+  text-align: center;
   font-size: 14px;
-}
-
-.game__result .feedback {
-  font-weight: bold;
-  margin-top: 10px;
-  font-size: 16px;
+  border: 1px solid var(--glass-border);
 }
 
 .audio__controls {
@@ -242,7 +174,13 @@
 }
 
 .control__btn {
-  padding: 8px 12px !important;
-  font-size: 14px !important;
-  min-width: 80px;
+  padding: 8px 16px !important;
+  font-size: 12px !important;
+  border: 1px solid var(--glass-border) !important;
+  background: transparent !important;
+  color: white !important;
+}
+
+.control__btn:hover:not(:disabled) {
+  border-color: var(--accent-solid);
 }

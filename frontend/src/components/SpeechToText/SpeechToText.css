@@ -6,110 +6,107 @@
 }
 
 .stt__page__container > h1 {
-    font-size: 28px;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 2rem;
 }
 
 .language-selector {
     margin: 20px 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .language-selector label {
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .language-selector select {
-    padding: 10px;
-    border-radius: 8px;
-    border: 2px solid #000000;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    color: white;
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
     outline: none;
     font-size: 16px;
-    min-width: 200px;
+    min-width: 250px;
+    transition: var(--transition);
 }
 
 .language-selector select:focus {
-    border-color: #007bff;
+    border-color: var(--accent-solid);
 }
 
-.stt__page__container > textarea {
-    width: 90%;
+.stt__page__container textarea {
+    width: 100%;
+    max-width: 800px;
     height: 200px;
+    background: var(--bg-card);
+    color: white;
     resize: none;
-    padding: 10px;
-    border-radius: 15px;
-    border-bottom:6px solid #000000;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid var(--glass-border);
     outline: none;
+    transition: var(--transition);
 }
 
-.stt__page__container > textarea:focus {
-    background-color: aliceblue;
-    border: 2px solid #000000;
-}
-
-.stt__page__container audio {
-    margin-top: 25px;
+.stt__page__container textarea:focus {
+    border-color: var(--accent-solid);
 }
 
 .stt__content {
-    margin: 30px;
+    margin: 30px 0;
+    width: 100%;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-.stt__actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.cancel__btn {
-    background-color: #dc3545;
-    color: white;
-}
-
-.cancel__btn:hover {
-    background-color: #c82333;
-}
-
-.games__btn {
-    background-color: #28a745;
-    color: white;
-}
-
-.games__btn:hover {
-    background-color: #218838;
-}
-
-.game__options {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    border: 1px solid #dee2e6;
-}
-
-.game__option__btn {
-    padding: 8px 12px;
-    background-color: #007bff;
+.primary__btn {
+    background: var(--accent-solid);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    padding: 14px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.2s;
+    transition: var(--transition);
+    margin: 10px;
 }
 
-.game__option__btn:hover {
-    background-color: #0056b3;
+.primary__btn:hover {
+    background: #6d28d9;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.secondary__btn {
+    background: transparent;
+    color: white;
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.secondary__btn:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--text-dim);
 }
 
 @media screen and (max-width: 520px) {

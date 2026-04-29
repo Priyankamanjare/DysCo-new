@@ -1,13 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/@fontsource/opendyslexic@5.0.2/index.css');
+
+:root {
+  --bg-dark: #050505;
+  --bg-card: #111111;
+  --bg-card-hover: #181818;
+  --accent-solid: #7c3aed; /* Deep Purple */
+  --accent-secondary: #2dd4bf; /* Teal for highlights */
+  --text-main: #ffffff;
+  --text-dim: #94a3b8;
+  --glass-bg: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --border-radius: 8px;
+  --transition: all 0.2s ease-out;
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Shape-based professional background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
+  background-size: 40px 40px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* --------------------------------
+   PROFESSIONAL SOLID THEME
+-------------------------------- */
+body.theme-professional {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+}
+
+body.theme-professional .dashboard__page__container,
+body.theme-professional .main__content__container {
+  background-color: var(--bg-dark) !important;
+}
+
+body.theme-professional .note__card,
+body.theme-professional .profile-card,
+body.theme-professional .type-card,
+body.theme-professional .stat-box {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-main) !important;
+  box-shadow: none !important;
+  border-radius: 4px !important; /* Sharp, professional corners */
+}
+
+body.theme-professional .primary__btn {
+  background: var(--accent-solid) !important;
+  border: 1px solid var(--accent-solid) !important;
+  color: white !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* --------------------------------
@@ -31,12 +97,15 @@ body.dyslexia-mode.theme-blue {
   --dyslexia-hover: #bbdefb;
 }
 
-
-
-
 /* --------------------------------
    PRIMARY LAYOUT MAPPINGS
 -------------------------------- */
+body.dyslexia-mode {
+  background-color: var(--dyslexia-bg) !important;
+  color: var(--text-main) !important; /* Keep text main color or use dyslexia text? index.css says var(--dyslexia-text) */
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
 body.dyslexia-mode {
   background-color: var(--dyslexia-bg) !important;
   color: var(--dyslexia-text) !important;
@@ -180,3 +249,4 @@ body.dyslexia-mode .question-text:hover {
   background-color: var(--dyslexia-hover) !important;
   color: var(--dyslexia-text) !important;
 }
+

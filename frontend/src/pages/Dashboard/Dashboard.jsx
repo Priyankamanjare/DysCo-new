@@ -235,12 +235,12 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard__page__container'>
-      <div className='dashboard__header' style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', boxSizing: 'border-box' }}>
+      <div className='dashboard__header'>
         <h1>
           👋 Welcome Back,{" "}
           {user && <span>{user.name}</span>}
         </h1>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className='header__actions'>
           <DyslexiaToggle />
           <button className='logout__btn' onClick={handleLogout}>Logout</button>
         </div>
